@@ -25,7 +25,7 @@ class CurrencyHandler(BaseHandler):
         if not APP_ID:
             raise ImproperlyConfigured(
                 "You need to set the 'OPENEXCHANGERATES_APP_ID' setting to your openexchangerates.org api key")
-        self.client = OpenExchangeRatesClient(APP_ID)
+        self.client = OpenExchangeRatesClient(APP_ID, show_alternative=True)
         self.endpoint = self.client.ENDPOINT_CURRENCIES
         super(CurrencyHandler, self).__init__(*args)
 

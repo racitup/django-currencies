@@ -22,10 +22,13 @@ class OpenExchangeRatesClient(object):
     ENDPOINT_CURRENCIES = BASE_URL + '/currencies.json'
     ENDPOINT_HISTORICAL = BASE_URL + '/historical/%s.json'
 
-    def __init__(self, api_key):
+    def __init__(self, api_key, show_alternative=False):
         """Convenient constructor"""
         self.client = requests.Session()
-        self.client.params.update({'app_id': api_key})
+        params = {'app_id': api_key}
+        if show_alternative:
+            params.update({'show_alternative': '1'})
+        self.client.params.update(params)
 
     def latest(self, base='USD'):
         """Fetches latest exchange rate data from service

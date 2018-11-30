@@ -11,9 +11,9 @@ from .managers import CurrencyManager
 @python_2_unicode_compatible
 class Currency(models.Model):
 
-    code = models.CharField(_('code'), max_length=3,
+    code = models.CharField(_('code'), max_length=20,
                             primary_key=True)
-    name = models.CharField(_('name'), max_length=35,
+    name = models.CharField(_('name'), max_length=50,
                             db_index=True)
     symbol = models.CharField(_('symbol'), max_length=4, blank=True,
                             db_index=True)
